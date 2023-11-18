@@ -1,5 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text,
+    SafeAreaView,
+    StatusBar,
+    StyleSheet,
+    useColorScheme} from 'react-native';
 
 const ToDoList = ({ tasks }) => {
 return

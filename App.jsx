@@ -1,5 +1,5 @@
-import ToDoForm from 'ToDoForm';
-import ToDoList from 'ToDoList';
+import ToDoForm from './ToDoForm';
+import ToDoList from './ToDoList';
 import React, { useState } from 'react';
 import {
   SafeAreaView,
@@ -10,7 +10,10 @@ import {
 
 function App() {
 const isDarkMode = useColorScheme() === 'dark';
-
+const [input, setInput] = useState('');
+const addTask = (taskText) => { setTasks([...tasks, taskText]); setInput(''); };
+const Colors = { darker: '#000000', lighter: '#FFFFFF' };
+const [taskText, setTaskText] = useState('');
 const backgroundStyle = {
   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
 };
@@ -23,13 +26,14 @@ const [tasks, setTasks] = useState([
 
 
 return (
-  <SafeAreaView style={backgroundStyle}>
+  <SafeAreaView styles={backgroundStyle}>
     <StatusBar
       barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       backgroundColor={backgroundStyle.backgroundColor}
     />
     <ToDoList tasks={tasks} />
-    <ToDoForm input={input} setInput={setInput} addTask={addTask} />
+    <ToDoForm input={input} setInput={setInput} addTask={addTask} setTaskText={setTaskText} />
+    
   </SafeAreaView>
 );
 };
