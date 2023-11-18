@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    useColorScheme} from 'react-native';
+import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({ input: { height: 40, margin: 12, borderWidth: 1, } });
+const ToDoForm = ({ addTask }) => {
+    const [taskText, setTaskText] = useState('');
 
-
-const ToDoForm = ({ input, setInput, addTask, setTaskText }) => {
-const [taskText, setTaskText] = useState('');
-const handleAddTask = () => {
-    addTask(taskText);
-    setTaskText('');
-};
 return (
     <View>
         <TextInput
@@ -21,9 +12,19 @@ return (
             onChangeText={(text) => setTaskText(text)}
             value={taskText}
         />
-    <Button title="Add Task" onPress={handleAddTask} />
-</View>
-);
+    <Button title="Add Task" onPress={() => addTask(taskText)} />
+    </View>
+    );
 };
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        padding: 16,
+        fontSize: 18,
+        borderColor: 'gray',
+        borderWidth: 1,
+    }
+});
 
 export default ToDoForm;

@@ -1,19 +1,14 @@
 import React from 'react';
-import { Text,
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    useColorScheme} from 'react-native';
+import { ScrollView, Text } from 'react-native';
 
 const ToDoList = ({ tasks }) => {
-return
-    (
-    <View>
+return (
+    <ScrollView scrollEnabled={true}>
         {tasks.map((task, index) => (
-        <Text key={index}>{task}</Text>))}
-        </View>
+        <Text key={index}>{task}</Text>
+        ))}
+    </ScrollView>
     );
 };
 
 export default ToDoList;
-
